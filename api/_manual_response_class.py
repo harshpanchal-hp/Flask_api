@@ -200,14 +200,14 @@ countries = [
 {'timezones': ['Europe/London'], 'code': 'GB', 'continent': 'Europe', 'name': 'United Kingdom', 'capital': 'London'},
 ]
 
-@app.route('/country')
+@app.route('/')
 def country_list():
     response = Response(
         json.dumps(countries), status=200, mimetype=JSON_MIME_TYPE)
     return response
 
 
-@app.route('/country/<string:country_name>')
+@app.route('/<string:country_name>')
 def country_detail(country_name):
     capital = search_capital(countries, country_name)
     if capital is None:
